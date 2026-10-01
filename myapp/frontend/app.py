@@ -1,7 +1,9 @@
 import streamlit as st
 import requests
 
-BACKEND_URL = 'http://localhost:8000'
+#BACKEND_URL = 'http://localhost:8000'
+BACKEND_URL = 'https://predictmarket-v1.onrender.com'
+
 
 st.title('Stock Market Prediction App')
 
@@ -34,3 +36,8 @@ if st.button('Download PDF'):
     params = {'path': file_path, 'price_col': price_col}
     resp = requests.get(f'{BACKEND_URL}/download/pdf', params=params)
     st.download_button('Save PDF', resp.content, 'stock_market_prediction_summary.pdf')
+
+@app.route("/", methods=["GET"])
+def home():
+    return {"status": "running", "message": "API is live"}
+

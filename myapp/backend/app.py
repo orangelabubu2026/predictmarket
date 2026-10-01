@@ -63,6 +63,15 @@ def recommendation_from_ema(summary: dict) -> dict:
 
     return {'decision': decision, 'reason': reason, 'score': score}
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "status": "running",
+        "message": "Stock Market Prediction API is live",
+        "endpoints": ["/summary", "/insights", "/download/csv", "/download/pdf"]
+    })
+
+
 @app.route('/summary', methods=['GET'])
 def summary():
     file_path = request.args.get('path')
@@ -133,5 +142,7 @@ def download_pdf():
         download_name='stock_market_prediction_summary.pdf'
     )
 
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+  port = int(os.environ.get("PORT", 8000))
+  app.run(host='0.0.0.0', port=port)
