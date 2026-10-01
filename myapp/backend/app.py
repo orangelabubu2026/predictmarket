@@ -118,8 +118,8 @@ def download_pdf():
         text.textLine(f'{k}: {v}')
 
     text.textLine('')
-    text.textLine(f'Decision: {rec['decision']}')
-    text.textLine(f'Reason: {rec['reason']}')
+    text.textLine(f"Decision: {rec['decision']}")
+    text.textLine(f"Reason: {rec['reason']}")
 
     c.drawText(text)
     c.showPage()
