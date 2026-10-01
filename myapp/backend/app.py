@@ -63,15 +63,12 @@ def recommendation_from_ema(summary: dict) -> dict:
 
     return {'decision': decision, 'reason': reason, 'score': score}
 
-@app.route("/", methods=["GET"])
+# Define a route for the home page
+@app.get('/')
 def home():
-    return jsonify({
-        "status": "running",
-        "message": "Stock Market Prediction API is live",
-        "endpoints": ["/summary", "/insights", "/download/csv", "/download/pdf"]
-    })
+    return "Welcome to the predict etf/stock price app"
 
-
+# Define an endpoint to predict summary
 @app.route('/summary', methods=['GET'])
 def summary():
     file_path = request.args.get('path')
@@ -80,6 +77,7 @@ def summary():
     summary = build_summary(df, price_col)
     return jsonify(summary)
 
+# Define an endpoint to predict insights
 @app.route('/insights', methods=['GET'])
 def insights():
     file_path = request.args.get('path')
