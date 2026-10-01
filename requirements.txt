@@ -1,7 +1,6 @@
 flask==3.0.0
-pandas==2.2.2
-numpy==1.26.4
-reportlab==4.0.8
+pandas==2.2.2 --only-binary=:all:
+numpy==1.26.4 --only-binary=:all:
+reportlab==4.0.8 --only-binary=:all:
 streamlit==1.31.0
 requests==2.31.0
-
